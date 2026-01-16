@@ -10,12 +10,14 @@ import Reviews from './components/Reviews';
 import FAQ from './components/FAQ';
 import Comparison from './components/Comparison';
 import Process from './components/Process';
+import ServicesList from './components/ServicesList';
 
 function App() {
   return (
     <div className="App">
       <Navbar />
       <Hero />
+      <ServicesList />
       <ValueProp />
       <Process />
       <Features />
