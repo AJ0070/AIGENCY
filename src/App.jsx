@@ -8,6 +8,7 @@ import Footer from './components/Footer';
 
 import Reviews from './components/Reviews';
 import FAQ from './components/FAQ';
+import Comparison from './components/Comparison';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Hero />
       <ValueProp />
       <Features />
+      <Comparison />
       <Reviews />
       <FAQ />
       <CTA />
