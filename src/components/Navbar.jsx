@@ -1,65 +1,74 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Navbar = () => {
-    const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-    return (
-        <nav className="navbar">
-            <div className="container nav-container">
-                <a href="#" className="logo">AIGENCY</a>
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-                <div className={`nav-links ${isOpen ? 'active' : ''}`}>
-                    <a href="#work" onClick={() => setIsOpen(false)}>Work</a>
-                    <a href="#benefits" onClick={() => setIsOpen(false)}>Benefits</a>
-                    <a href="#services" onClick={() => setIsOpen(false)}>Services</a>
-                    <a href="#reviews" onClick={() => setIsOpen(false)}>Reviews</a>
-                    <a href="#faq" onClick={() => setIsOpen(false)}>FAQ</a>
-                </div>
+  return (
+    <nav className="toolbar-wrapper">
+      <div className="toolbar">
+        <div className="logo-container">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L2 22H22L12 2Z" fill="#fff" />
+          </svg>
+        </div>
 
-                <a href="#contact" className="btn btn-primary nav-cta">Start Project</a>
+        <div className="nav-links">
+          <a href="#work">Our Work</a>
+          <a href="#comparison">Comparison</a>
+          <a href="#faq">FAQs</a>
+          <a href="#">Careers</a>
+        </div>
 
-                <div className="mobile-toggle" onClick={() => setIsOpen(!isOpen)}>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
+        <a href="#contact" className="btn btn-white">Book a Call</a>
+      </div>
 
-            <style>{`
-        .navbar {
+      <style>{`
+        .toolbar-wrapper {
           position: fixed;
-          top: 0;
+          top: 2rem;
           left: 0;
           width: 100%;
           z-index: 1000;
-          background: rgba(5, 5, 5, 0.8);
-          backdrop-filter: blur(12px);
-          border-bottom: 1px solid rgba(255,255,255,0.05);
-          padding: 1.25rem 0;
-        }
-        
-        .nav-container {
           display: flex;
-          justify-content: space-between;
-          align-items: center;
+          justify-content: center;
+          padding: 0 1rem;
         }
 
-        .logo {
-          font-family: var(--font-secondary);
-          font-weight: 700;
-          font-size: 1.5rem;
-          color: #fff;
-          letter-spacing: -0.05em;
+        .toolbar {
+          background: rgba(5, 5, 5, 0.85);
+          backdrop-filter: blur(16px);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 9999px;
+          padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+          display: flex;
+          align-items: center;
+          gap: 2rem;
+          max-width: 600px;
+          width: 100%;
+          justify-content: space-between;
+          box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        .logo-container svg {
+          display: block;
         }
 
         .nav-links {
           display: flex;
-          gap: 2.5rem;
+          gap: 1.5rem;
         }
 
         .nav-links a {
           color: var(--text-secondary);
-          font-size: 0.95rem;
+          font-size: 0.9rem;
           font-weight: 500;
           transition: color 0.3s;
         }
@@ -68,59 +77,43 @@ const Navbar = () => {
           color: #fff;
         }
 
-        .nav-cta {
-          padding: 0.6rem 1.2rem;
-          font-size: 0.9rem;
-        }
-
-        .mobile-toggle {
-          display: none;
-          flex-direction: column;
-          gap: 6px;
-          cursor: pointer;
-        }
-
-        .mobile-toggle span {
-          width: 24px;
-          height: 2px;
+        .btn-white {
           background: #fff;
+          color: #000;
+          padding: 0.6rem 1.25rem;
+          border-radius: 9999px;
+          font-weight: 600;
+          font-size: 0.9rem;
+          transition: all 0.3s ease;
+          text-decoration: none;
+        }
+
+        .btn-white:hover {
+          background: #e5e5e5;
+          transform: translateY(-1px);
         }
 
         @media (max-width: 768px) {
+          .toolbar {
+            gap: 1rem;
+            padding: 0.5rem 0.5rem 0.5rem 1rem;
+          }
+          
           .nav-links {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            background: #050505;
-            flex-direction: column;
-            padding: 2rem;
-            gap: 1.5rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            transform: translateY(-100%);
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.3s ease;
-            z-index: -1;
-          }
-
-          .nav-links.active {
-            transform: translateY(0);
-            opacity: 1;
-            pointer-events: all;
-          }
-
-          .nav-cta {
             display: none;
           }
 
-          .mobile-toggle {
-            display: flex;
+          .toolbar-wrapper {
+            top: 1rem;
+          }
+          
+          .logo-container {
+             margin-right: auto;
           }
         }
       `}</style>
-        </nav>
-    );
+    </nav>
+  );
 };
 
 export default Navbar;

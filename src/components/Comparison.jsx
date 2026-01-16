@@ -1,52 +1,52 @@
 import React from 'react';
 
 const Comparison = () => {
-    const data = [
-        { feature: "Project Timeline", aigency: "2-4 weeks", generic: "6-12 weeks", freelance: "8-16 weeks" },
-        { feature: "Conversion Optimization", aigency: "Included", generic: "Extra Cost", freelance: "Not Available" },
-        { feature: "Design Quality", aigency: "Premium", generic: "Standard", freelance: "Basic" },
-        { feature: "Technical Support", aigency: "24/7", generic: "Business Hours", freelance: "Limited" },
-        { feature: "SEO Optimization", aigency: "Included", generic: "Basic", freelance: "Not Included" },
-        { feature: "Mobile Responsive", aigency: "Perfect", generic: "Good", freelance: "Basic" },
-        { feature: "Senior Talent", aigency: "Expert Level", generic: "Mid Level", freelance: "Junior Level" },
-    ];
+  const data = [
+    { feature: "Project Timeline", aigency: "2-4 weeks", generic: "6-12 weeks", freelance: "8-16 weeks" },
+    { feature: "Conversion Optimization", aigency: "Included", generic: "Extra Cost", freelance: "Not Available" },
+    { feature: "Design Quality", aigency: "Premium", generic: "Standard", freelance: "Basic" },
+    { feature: "Technical Support", aigency: "24/7", generic: "Business Hours", freelance: "Limited" },
+    { feature: "SEO Optimization", aigency: "Included", generic: "Basic", freelance: "Not Included" },
+    { feature: "Mobile Responsive", aigency: "Perfect", generic: "Good", freelance: "Basic" },
+    { feature: "Senior Talent", aigency: "Expert Level", generic: "Mid Level", freelance: "Junior Level" },
+  ];
 
-    return (
-        <section className="comparison section-padding">
-            <div className="container">
-                <div className="text-center mb-5">
-                    <h2 className="section-title">What makes us different?</h2>
-                    <p className="section-subtitle">See how we stack up against the competition</p>
-                </div>
+  return (
+    <section className="comparison section-padding" id="comparison">
+      <div className="container">
+        <div className="text-center mb-5">
+          <h2 className="section-title">What makes us different?</h2>
+          <p className="section-subtitle">See how we stack up against the competition</p>
+        </div>
 
-                <div className="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th className="feature-col">Features</th>
-                                <th className="aigency-col">
-                                    AIGENCY
-                                    <span className="badge">Recommended</span>
-                                </th>
-                                <th>Generic Agency</th>
-                                <th>Freelancer</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {data.map((row, index) => (
-                                <tr key={index}>
-                                    <td className="feature-name">{row.feature}</td>
-                                    <td className="aigency-cell">{row.aigency}</td>
-                                    <td className="muted">{row.generic}</td>
-                                    <td className="muted">{row.freelance}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+        <div className="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th className="feature-col">Features</th>
+                <th className="aigency-col">
+                  AIGENCY
+                  <span className="badge">Recommended</span>
+                </th>
+                <th>Generic Agency</th>
+                <th>Freelancer</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((row, index) => (
+                <tr key={index}>
+                  <td className="feature-name">{row.feature}</td>
+                  <td className="aigency-cell">{row.aigency}</td>
+                  <td className="muted">{row.generic}</td>
+                  <td className="muted">{row.freelance}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
 
-            <style>{`
+      <style>{`
         .mb-5 { margin-bottom: 3rem; }
 
         .table-container {
@@ -158,8 +158,8 @@ const Comparison = () => {
           }
         }
       `}</style>
-        </section>
-    );
+    </section>
+  );
 };
 
 export default Comparison;
