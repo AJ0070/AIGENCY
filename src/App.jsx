@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import Reviews from './components/Reviews';
 import FAQ from './components/FAQ';
 import Comparison from './components/Comparison';
+import Process from './components/Process';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Navbar />
       <Hero />
       <ValueProp />
+      <Process />
       <Features />
       <Comparison />
       <Reviews />
