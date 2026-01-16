@@ -1,55 +1,58 @@
 import React, { useState } from 'react';
 
 const FAQItem = ({ question, answer }) => {
-    const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-    return (
-        <div className={`faq-item ${isOpen ? 'open' : ''}`} onClick={() => setIsOpen(!isOpen)}>
-            <div className="faq-question">
-                <h3>{question}</h3>
-                <span className="toggle">{isOpen ? '−' : '+'}</span>
-            </div>
-            <div className="faq-answer">
-                <p>{answer}</p>
-            </div>
-        </div>
-    );
+  return (
+    <div className={`faq-item ${isOpen ? 'open' : ''}`} onClick={() => setIsOpen(!isOpen)}>
+      <div className="faq-question">
+        <h3>{question}</h3>
+        <span className="toggle">{isOpen ? '−' : '+'}</span>
+      </div>
+      <div className="faq-answer">
+        <p>{answer}</p>
+      </div>
+    </div>
+  );
 };
 
 const FAQ = () => {
-    const faqs = [
-        {
-            question: "How fast can you build my site?",
-            answer: "We typically launch standard agency sites within 2-3 weeks. Complex web apps may take 4-8 weeks depending on requirements. Speed is our core metric."
-        },
-        {
-            question: "What technology stack do you use?",
-            answer: "We specialize in modern React ecosystems (Next.js, Vite), ensuring your site is blazing fast, SEO-ready, and scalable. No bloated legacy builders."
-        },
-        {
-            question: "Do you offer post-launch support?",
-            answer: "Yes. We don't disappear after launch. We offer monthly maintenance packages to keep your site updated, secure, and converting."
-        },
-        {
-            question: "How does your pricing work?",
-            answer: "We offer startup-friendly flat rates for standard builds, and custom quotes for complex projects. Transparency is key—no hidden fees."
-        }
-    ];
+  const faqs = [
+    {
+      question: "Why not just hire a full-time developer?",
+      answer: "Hiring in-house is costly, experienced designers can exceed $100k and developers $120k annually, not including the benefits. We deliver senior-level expertise at a fraction of the cost."
+    },
+    {
+      question: "How fast can you deliver my project?",
+      answer: "Timelines depend on scope, but most projects wrap up within 2-6 weeks. After our initial discussion, you'll receive a clear timeline with milestones."
+    },
+    {
+      question: "What if I'm not satisfied with the outcome?",
+      answer: "It's rare, but if you're not fully happy, we include unlimited revisions within the project scope. We'll refine until the final product matches your vision."
+    },
+    {
+      question: "How will we talk throughout the project?",
+      answer: "We typically communicate through Discord, Whatsapp, Telegram or Slack (or your preferred platform) and schedule regular check-ins. You'll always know the progress and have direct access to us when needed."
+    },
+    {
+      question: "Do you provide support after the launch?",
+      answer: "Absolutely. We offer end-to-end support and maintenance plans so your website stays secure, optimized, and up-to-date long after launch."
+    }
+  ];
+  return (
+    <section className="faq section-padding" id="faq">
+      <div className="container">
+        <div className="faq-container">
+          <h2 className="section-title text-center">Frequently Asked Questions</h2>
+          <div className="faq-list">
+            {faqs.map((faq, index) => (
+              <FAQItem key={index} {...faq} />
+            ))}
+          </div>
+        </div>
+      </div>
 
-    return (
-        <section className="faq section-padding" id="faq">
-            <div className="container">
-                <div className="faq-container">
-                    <h2 className="section-title text-center">Frequently Asked Questions</h2>
-                    <div className="faq-list">
-                        {faqs.map((faq, index) => (
-                            <FAQItem key={index} {...faq} />
-                        ))}
-                    </div>
-                </div>
-            </div>
-
-            <style>{`
+      <style>{`
         .faq-container {
           max-width: 800px;
           margin: 0 auto;
@@ -101,8 +104,8 @@ const FAQ = () => {
           color: var(--accent-color);
         }
       `}</style>
-        </section>
-    );
+    </section>
+  );
 };
 
 export default FAQ;
