@@ -22,6 +22,13 @@ const DelayedBackground = () => {
 
   useEffect(() => {
     // Defer loading of heavy 3D background until after LCP
+    // AND Check if we are on a mobile device (< 768px). If so, do NOT load at all.
+    const isMobile = window.innerWidth < 768;
+    if (isMobile) {
+      // Do nothing, let it stay false (not loaded)
+      return;
+    }
+
     const timer = setTimeout(() => setShouldLoad(true), 2000);
     return () => clearTimeout(timer);
   }, []);
