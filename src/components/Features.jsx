@@ -1,43 +1,94 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import featureSpeed from '../assets/feature-speed.png';
-import featureConversion from '../assets/feature-conversion.png';
-import featureStrategy from '../assets/feature-strategy-v2.png';
-import featurePricing from '../assets/feature-pricing-v2.png';
-import featureSupport from '../assets/feature-support-v2.png';
-import featureTeam from '../assets/feature-team-v2.png';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { Float, PerspectiveCamera, Environment } from '@react-three/drei';
+
+const Geometries = ({ type, color }) => {
+  const meshRef = useRef();
+  const [hovered, setHover] = useState(false);
+
+  useFrame((state, delta) => {
+    if (meshRef.current) {
+      meshRef.current.rotation.x += delta * 0.2;
+      meshRef.current.rotation.y += delta * (hovered ? 2 : 0.5);
+    }
+  });
+
+  const materialProps = {
+    color: hovered ? '#ffffff' : color,
+    wireframe: true,
+    transparent: true,
+    opacity: 0.8,
+  };
+
+  return (
+    <mesh
+      ref={meshRef}
+      onPointerOver={() => setHover(true)}
+      onPointerOut={() => setHover(false)}
+      scale={hovered ? 2.2 : 2}
+    >
+      {type === 'cube' && <boxGeometry args={[1, 1, 1]} />}
+      {type === 'sphere' && <icosahedronGeometry args={[0.8, 1]} />}
+      {type === 'cone' && <coneGeometry args={[0.7, 1.4, 4]} />}
+      {type === 'torus' && <torusGeometry args={[0.6, 0.2, 16, 32]} />}
+      {type === 'octahedron' && <octahedronGeometry args={[0.9]} />}
+      {type === 'knot' && <torusKnotGeometry args={[0.5, 0.15, 64, 8]} />}
+      {type === 'tetrahedron' && <tetrahedronGeometry args={[1.2]} />}
+      {type === 'dodecahedron' && <dodecahedronGeometry args={[0.8]} />}
+
+      <meshStandardMaterial {...materialProps} />
+    </mesh>
+  );
+};
+
+const FeatureIcon = ({ type }) => {
+  return (
+    <div className="icon-canvas-container">
+      <Canvas>
+        <PerspectiveCamera makeDefault position={[0, 0, 5]} />
+        <ambientLight intensity={0.5} />
+        <pointLight position={[10, 10, 10]} intensity={1} color="#CBF382" />
+        <Float speed={2} rotationIntensity={1} floatIntensity={1}>
+          <Geometries type={type} color="#CBF382" />
+        </Float>
+        <Environment preset="city" />
+      </Canvas>
+    </div>
+  );
+};
 
 const Features = () => {
   const features = [
     {
       title: "Conversion-Driven Design",
       desc: "Crafted to turn visitors into loyal customers. Every detail designed for measurable ROI and lasting growth.",
-      img: featureConversion
+      shape: "knot"
     },
     {
       title: "Lightning-Fast Delivery",
       desc: "Fast turnarounds, flawless quality. So you can move fast, launch sooner, and stay ahead of the competition.",
-      img: featureSpeed
+      shape: "tetrahedron"
     },
     {
       title: "Clear, Honest Pricing",
       desc: "One flat rate, no hidden fees, no surprises. Predictable pricing that makes budgeting effortless.",
-      img: featurePricing
+      shape: "dodecahedron"
     },
     {
       title: "Strategic Design Thinking",
       desc: "We blend creativity and strategy to solve real business challenges and drive measurable outcomes.",
-      img: featureStrategy
+      shape: "octahedron"
     },
     {
       title: "Post-Launch Support",
       desc: "We stay with you even after launch. Get quick help, updates, and ongoing improvements as your business grows.",
-      img: featureSupport
+      shape: "torus"
     },
     {
       title: "Top-Tier Creative Team",
       desc: "Work with senior designers trusted by leading brands. Premium quality without inflated agency pricing.",
-      img: featureTeam
+      shape: "sphere"
     }
   ];
 
@@ -79,9 +130,7 @@ const Features = () => {
         >
           {features.map((feature, index) => (
             <motion.div className="feature-card" key={index} variants={item}>
-              <div className="feature-image">
-                <img src={feature.img} alt={feature.title} />
-              </div>
+              <FeatureIcon type={feature.shape} />
               <div className="feature-content">
                 <h3>{feature.title}</h3>
                 <p>{feature.desc}</p>
@@ -128,21 +177,10 @@ const Features = () => {
           border-color: var(--accent-color);
         }
 
-        .feature-image {
+        .icon-canvas-container {
           height: 180px;
-          overflow: hidden;
-          position: relative;
-        }
-
-        .feature-image img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          transition: transform 0.5s ease;
-        }
-
-        .feature-card:hover .feature-image img {
-          transform: scale(1.05);
+          background: #000;
+          cursor: pointer;
         }
 
         .feature-content {
