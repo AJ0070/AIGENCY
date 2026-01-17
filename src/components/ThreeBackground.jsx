@@ -10,7 +10,7 @@ const ParticleField = (props) => {
     const ref = useRef();
 
     // Generate random positions
-    const count = 2000;
+    const count = 500;
     const positions = useMemo(() => {
         const positions = new Float32Array(count * 3);
         for (let i = 0; i < count; i++) {
@@ -48,7 +48,7 @@ const ParticleField = (props) => {
 const ThreeBackground = () => {
     return (
         <div className="three-bg">
-            <Canvas camera={{ position: [0, 0, 1] }}>
+            <Canvas camera={{ position: [0, 0, 1] }} dpr={[1, 1.5]} gl={{ antialias: false }}>
                 <ParticleField />
             </Canvas>
             <style>{`
