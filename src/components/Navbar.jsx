@@ -58,7 +58,7 @@ const Navbar = () => {
         }
 
         .toolbar {
-          background: rgba(5, 5, 5, 0.85);
+          background: rgba(5, 5, 5, 0.6);
           backdrop-filter: blur(16px);
           border: 1px solid rgba(255, 255, 255, 0.1);
           border-radius: 9999px;
