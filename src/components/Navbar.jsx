@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -12,7 +13,12 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="toolbar-wrapper">
+    <motion.nav
+      className="toolbar-wrapper"
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.5 }}
+    >
       <div className="toolbar">
         <div className="logo-container">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -27,7 +33,14 @@ const Navbar = () => {
           <a href="#">Careers</a>
         </div>
 
-        <a href="#contact" className="btn btn-white">Book a Call</a>
+        <motion.a
+          href="#contact"
+          className="btn btn-white"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          Book a Call
+        </motion.a>
       </div>
 
       <style>{`
@@ -112,7 +125,7 @@ const Navbar = () => {
           }
         }
       `}</style>
-    </nav>
+    </motion.nav>
   );
 };
 

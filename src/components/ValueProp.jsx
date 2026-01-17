@@ -1,21 +1,28 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const ValueProp = () => {
-    return (
-        <section className="value-prop section-padding">
-            <div className="container">
-                <div className="value-content">
-                    <h2 className="title-large">
-                        Senior Talent. <br />
-                        <span className="text-gradient">Startup Rates.</span>
-                    </h2>
-                    <p className="subtitle">
-                        High-quality website builds by experienced developers. Maximize conversions without overspending.
-                    </p>
-                </div>
-            </div>
+  return (
+    <section className="value-prop section-padding">
+      <div className="container">
+        <motion.div
+          className="value-content"
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <h2 className="title-large">
+            Senior Talent. <br />
+            <span className="text-gradient">Startup Rates.</span>
+          </h2>
+          <p className="subtitle">
+            High-quality website builds by experienced developers. Maximize conversions without overspending.
+          </p>
+        </motion.div>
+      </div>
 
-            <style>{`
+      <style>{`
         .value-prop {
           background: linear-gradient(180deg, rgba(5,5,5,0) 0%, rgba(203, 243, 130, 0.03) 50%, rgba(5,5,5,0) 100%);
           text-align: center;
@@ -55,8 +62,8 @@ const ValueProp = () => {
           }
         }
       `}</style>
-        </section>
-    );
+    </section>
+  );
 };
 
 export default ValueProp;

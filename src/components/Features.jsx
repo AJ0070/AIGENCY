@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import featureSpeed from '../assets/feature-speed.png';
 import featureConversion from '../assets/feature-conversion.png';
 import featureStrategy from '../assets/feature-strategy.png';
@@ -40,17 +41,44 @@ const Features = () => {
     }
   ];
 
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+  };
+
   return (
     <section className="features section-padding" id="benefits">
       <div className="container">
-        <div className="section-header">
+        <motion.div
+          className="section-header"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <h2 className="section-title">Why AIGENCY?</h2>
           <p className="section-subtitle">The competitive advantage your startup needs.</p>
-        </div>
+        </motion.div>
 
-        <div className="features-grid">
+        <motion.div
+          className="features-grid"
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
+        >
           {features.map((feature, index) => (
-            <div className="feature-card" key={index}>
+            <motion.div className="feature-card" key={index} variants={item}>
               <div className="feature-image">
                 <img src={feature.img} alt={feature.title} />
               </div>
@@ -58,9 +86,9 @@ const Features = () => {
                 <h3>{feature.title}</h3>
                 <p>{feature.desc}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
 
       <style>{`

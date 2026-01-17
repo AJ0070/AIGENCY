@@ -1,36 +1,58 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const Footer = () => {
-    return (
-        <footer className="footer">
-            <div className="container footer-container">
-                <div className="footer-left">
-                    <h3 className="logo">AIGENCY</h3>
-                    <p>© 2026 AIGENCY. All rights reserved.</p>
-                </div>
-                <div className="footer-links">
-                    <div className="link-col">
-                        <h4>Services</h4>
-                        <a href="#">Web Design</a>
-                        <a href="#">Development</a>
-                        <a href="#">SEO</a>
-                    </div>
-                    <div className="link-col">
-                        <h4>Company</h4>
-                        <a href="#">About</a>
-                        <a href="#">Career</a>
-                        <a href="#">Contact</a>
-                    </div>
-                    <div className="link-col">
-                        <h4>Social</h4>
-                        <a href="#">Twitter</a>
-                        <a href="#">LinkedIn</a>
-                        <a href="#">Instagram</a>
-                    </div>
-                </div>
-            </div>
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
 
-            <style>{`
+  const item = {
+    hidden: { opacity: 0, y: 10 },
+    show: { opacity: 1, y: 0 }
+  };
+
+  return (
+    <footer className="footer">
+      <motion.div
+        className="container footer-container"
+        variants={container}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+      >
+        <motion.div className="footer-left" variants={item}>
+          <h3 className="logo">AIGENCY</h3>
+          <p>© 2026 AIGENCY. All rights reserved.</p>
+        </motion.div>
+        <div className="footer-links">
+          <motion.div className="link-col" variants={item}>
+            <h4>Services</h4>
+            <a href="#">Web Design</a>
+            <a href="#">Development</a>
+            <a href="#">SEO</a>
+          </motion.div>
+          <motion.div className="link-col" variants={item}>
+            <h4>Company</h4>
+            <a href="#">About</a>
+            <a href="#">Career</a>
+            <a href="#">Contact</a>
+          </motion.div>
+          <motion.div className="link-col" variants={item}>
+            <h4>Social</h4>
+            <a href="#">Twitter</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">Instagram</a>
+          </motion.div>
+        </div>
+      </motion.div>
+
+      <style>{`
         .footer {
           border-top: 1px solid rgba(255,255,255,0.05);
           padding: 4rem 0 2rem;
@@ -87,8 +109,8 @@ const Footer = () => {
           }
         }
       `}</style>
-        </footer>
-    );
+    </footer>
+  );
 };
 
 export default Footer;

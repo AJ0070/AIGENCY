@@ -1,18 +1,35 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const FAQItem = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className={`faq-item ${isOpen ? 'open' : ''}`} onClick={() => setIsOpen(!isOpen)}>
+    <motion.div
+      className={`faq-item ${isOpen ? 'open' : ''}`}
+      onClick={() => setIsOpen(!isOpen)}
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+    >
       <div className="faq-question">
         <h3>{question}</h3>
         <span className="toggle">{isOpen ? '−' : '+'}</span>
       </div>
-      <div className="faq-answer">
-        <p>{answer}</p>
-      </div>
-    </div>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="faq-answer"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <p>{answer}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 };
 
@@ -43,7 +60,15 @@ const FAQ = () => {
     <section className="faq section-padding" id="faq">
       <div className="container">
         <div className="faq-container">
-          <h2 className="section-title text-center">Frequently Asked Questions</h2>
+          <motion.h2
+            className="section-title text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            Frequently Asked Questions
+          </motion.h2>
           <div className="faq-list">
             {faqs.map((faq, index) => (
               <FAQItem key={index} {...faq} />
@@ -89,14 +114,11 @@ const FAQ = () => {
         }
 
         .faq-answer {
-          max-height: 0;
           overflow: hidden;
-          transition: max-height 0.3s ease, padding 0.3s ease;
           color: var(--text-secondary);
         }
-
-        .faq-item.open .faq-answer {
-          max-height: 200px;
+        
+        .faq-answer p {
           padding-bottom: 1.5rem;
         }
 

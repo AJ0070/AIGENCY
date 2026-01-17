@@ -1,31 +1,59 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import heroVisual from '../assets/hero-visual.png';
 
 const Hero = () => {
-    return (
-        <section className="hero">
-            <div className="container hero-container">
-                <div className="hero-content">
-                    <h1 className="hero-title">
-                        Launch <br />
-                        Your Site. <br />
-                        <span className="highlight">Now.</span>
-                    </h1>
-                    <p className="hero-subtitle">
-                        Stop waiting for slow agencies. Get your high-converting website delivered fast.
-                    </p>
-                    <div className="hero-actions">
-                        <a href="#contact" className="btn btn-primary">Start Your Project</a>
-                        <a href="#work" className="btn btn-outline">View Portfolio</a>
-                    </div>
-                </div>
-                <div className="hero-visual">
-                    <img src={heroVisual} alt="Abstract technical visualization" />
-                    <div className="glow"></div>
-                </div>
-            </div>
+  return (
+    <section className="hero">
+      <div className="container hero-container">
+        <div className="hero-content">
+          <motion.h1
+            className="hero-title"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            Launch <br />
+            Your Site. <br />
+            <motion.span
+              className="highlight"
+              initial={{ opacity: 0, scaleX: 0 }}
+              animate={{ opacity: 1, scaleX: 1 }}
+              transition={{ duration: 0.8, delay: 1 }}
+            >
+              Now.
+            </motion.span>
+          </motion.h1>
+          <motion.p
+            className="hero-subtitle"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            Stop waiting for slow agencies. Get your high-converting website delivered fast.
+          </motion.p>
+          <motion.div
+            className="hero-actions"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            <a href="#contact" className="btn btn-primary">Start Your Project</a>
+            <a href="#work" className="btn btn-outline">View Portfolio</a>
+          </motion.div>
+        </div>
+        <motion.div
+          className="hero-visual"
+          initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
+          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+          transition={{ duration: 1, delay: 0.2 }}
+        >
+          <img src={heroVisual} alt="Abstract technical visualization" />
+          <div className="glow"></div>
+        </motion.div>
+      </div>
 
-            <style>{`
+      <style>{`
         .hero {
           padding-top: 180px;
           padding-bottom: 80px;
@@ -125,8 +153,8 @@ const Hero = () => {
           }
         }
       `}</style>
-        </section>
-    );
+    </section>
+  );
 };
 
 export default Hero;

@@ -1,57 +1,84 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const Process = () => {
-    const steps = [
-        {
-            number: "01",
-            title: "Discovery",
-            desc: "We start with a quick conversation to learn about your business, goals, and audience. Together, we decide what needs to be built, how it should look, and when it will be ready."
-        },
-        {
-            number: "02",
-            title: "Design",
-            desc: "We create simple first drafts and quickly turn them into polished designs. You’ll see progress as we go and can give feedback anytime. The focus: looking great and working for your audience."
-        },
-        {
-            number: "03",
-            title: "Development",
-            desc: "We turn the approved design into a fast, mobile-friendly website that’s easy to use. Everything comes with built-in SEO, analytics, and performance optimization."
-        },
-        {
-            number: "04",
-            title: "Launch",
-            desc: "We set up hosting, connect your domain, and make the site live. After launch, we track performance and make any fine-tuning needed so you get the best results."
-        }
-    ];
+  const steps = [
+    {
+      number: "01",
+      title: "Discovery",
+      desc: "We start with a quick conversation to learn about your business, goals, and audience. Together, we decide what needs to be built, how it should look, and when it will be ready."
+    },
+    {
+      number: "02",
+      title: "Design",
+      desc: "We create simple first drafts and quickly turn them into polished designs. You’ll see progress as we go and can give feedback anytime. The focus: looking great and working for your audience."
+    },
+    {
+      number: "03",
+      title: "Development",
+      desc: "We turn the approved design into a fast, mobile-friendly website that’s easy to use. Everything comes with built-in SEO, analytics, and performance optimization."
+    },
+    {
+      number: "04",
+      title: "Launch",
+      desc: "We set up hosting, connect your domain, and make the site live. After launch, we track performance and make any fine-tuning needed so you get the best results."
+    }
+  ];
 
-    return (
-        <section className="process section-padding" id="process">
-            <div className="container">
-                <div className="process-header">
-                    <div className="header-content">
-                        <span className="subtitle-sm">How it works</span>
-                        <h2 className="section-title">A clean, 4-step process</h2>
-                        <p className="section-desc">
-                            We make it easy to get you a stunning, high-performing website. Fast, clear, and built to win customers.
-                        </p>
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
 
-                    </div>
-                </div>
+  const item = {
+    hidden: { opacity: 0, y: 30 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+  };
 
-                <div className="process-steps">
-                    {steps.map((step, index) => (
-                        <div className="step-card" key={index}>
-                            <div className="step-number">{step.number}</div>
-                            <div className="step-content">
-                                <h3>{step.title}</h3>
-                                <p>{step.desc}</p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
+  return (
+    <section className="process section-padding" id="process">
+      <div className="container">
+        <div className="process-header">
+          <motion.div
+            className="header-content"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <span className="subtitle-sm">How it works</span>
+            <h2 className="section-title">A clean, 4-step process</h2>
+            <p className="section-desc">
+              We make it easy to get you a stunning, high-performing website. Fast, clear, and built to win customers.
+            </p>
+          </motion.div>
+        </div>
 
-            <style>{`
+        <motion.div
+          className="process-steps"
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          {steps.map((step, index) => (
+            <motion.div className="step-card" key={index} variants={item}>
+              <div className="step-number">{step.number}</div>
+              <div className="step-content">
+                <h3>{step.title}</h3>
+                <p>{step.desc}</p>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+
+      <style>{`
         .process-header {
           display: flex;
           justify-content: space-between;
@@ -154,8 +181,8 @@ const Process = () => {
           }
         }
       `}</style>
-        </section>
-    );
+    </section>
+  );
 };
 
 export default Process;

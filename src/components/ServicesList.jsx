@@ -1,48 +1,79 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const ServicesList = () => {
-    const services = [
-        "Development",
-        "Logos",
-        "Copywriting",
-        "Landing Pages",
-        "UI UX Design",
-        "Web Design",
-        "Product Design",
-        "CMS Setup",
-        "Maintenance",
-        "Motion Graphics",
-        "Hosting",
-        "Site Migration",
-        "Deployment"
-    ];
+  const services = [
+    "Development",
+    "Logos",
+    "Copywriting",
+    "Landing Pages",
+    "UI UX Design",
+    "Web Design",
+    "Product Design",
+    "CMS Setup",
+    "Maintenance",
+    "Motion Graphics",
+    "Hosting",
+    "Site Migration",
+    "Deployment"
+  ];
 
-    return (
-        <section className="services-list section-padding">
-            <div className="container services-container">
-                <div className="services-header">
-                    <span className="subtitle-sm">All your marketing needs handled</span>
-                    <h2 className="title-large">
-                        In record <br />
-                        <span className="text-white">time.</span>
-                    </h2>
-                </div>
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.05
+      }
+    }
+  };
 
-                <div className="services-grid">
-                    {services.map((service, index) => (
-                        <div className="service-item" key={index}>
-                            <span className="service-name">{service}</span>
-                            <div className="icon-box">
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#000" stroke="#000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                </svg>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
+  const item = {
+    hidden: { opacity: 0, x: -20 },
+    show: { opacity: 1, x: 0 }
+  };
 
-            <style>{`
+  return (
+    <section className="services-list section-padding">
+      <div className="container services-container">
+        <motion.div
+          className="services-header"
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <span className="subtitle-sm">All your marketing needs handled</span>
+          <h2 className="title-large">
+            In record <br />
+            <span className="text-white">time.</span>
+          </h2>
+        </motion.div>
+
+        <motion.div
+          className="services-grid"
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          {services.map((service, index) => (
+            <motion.div className="service-item" key={index} variants={item}>
+              <span className="service-name">{service}</span>
+              <motion.div
+                className="icon-box"
+                whileHover={{ scale: 1.2, rotate: 10 }}
+              >
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#000" stroke="#000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </motion.div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+
+      <style>{`
         .services-container {
           display: grid;
           grid-template-columns: 1fr 1fr;
@@ -82,6 +113,7 @@ const ServicesList = () => {
           padding: 1.5rem 0;
           border-bottom: 1px solid rgba(255,255,255,0.1);
           transition: all 0.3s ease;
+          cursor: pointer;
         }
 
         .service-item:hover {
@@ -135,8 +167,8 @@ const ServicesList = () => {
           }
         }
       `}</style>
-        </section>
-    );
+    </section>
+  );
 };
 
 export default ServicesList;

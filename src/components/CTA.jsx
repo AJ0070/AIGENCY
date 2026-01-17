@@ -1,24 +1,42 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const CTA = () => {
-    return (
-        <section className="cta section-padding" id="contact">
-            <div className="container">
-                <div className="cta-box">
-                    <h2>
-                        Your website is your <span className="highlight">24/7 salesman.</span>
-                    </h2>
-                    <p>
-                        Don't just settle for an ordinary one. Go beyond with AIGENCY.
-                    </p>
-                    <div className="input-group">
-                        <input type="email" placeholder="Enter your email" />
-                        <button className="btn btn-primary">Schedule Meeting</button>
-                    </div>
-                </div>
-            </div>
+  return (
+    <section className="cta section-padding" id="contact">
+      <div className="container">
+        <motion.div
+          className="cta-box"
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <h2>
+            Your website is your <span className="highlight">24/7 salesman.</span>
+          </h2>
+          <p>
+            Don't just settle for an ordinary one. Go beyond with AIGENCY.
+          </p>
+          <motion.div
+            className="input-group"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+          >
+            <input type="email" placeholder="Enter your email" />
+            <motion.button
+              className="btn btn-primary"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Schedule Meeting
+            </motion.button>
+          </motion.div>
+        </motion.div>
+      </div>
 
-            <style>{`
+      <style>{`
         .cta-box {
           background: rgba(255, 255, 255, 0.03);
           border: 1px solid rgba(255, 255, 255, 0.1);
@@ -86,8 +104,8 @@ const CTA = () => {
           }
         }
       `}</style>
-        </section>
-    );
+    </section>
+  );
 };
 
 export default CTA;
