@@ -34,7 +34,9 @@ const Navbar = () => {
         </div>
 
         <motion.a
-          href="#contact"
+          href="https://calendly.com/jashambaliya1/30min"
+          target="_blank"
+          rel="noopener noreferrer"
           className="btn btn-white"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}

@@ -2,6 +2,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const CTA = () => {
+  const [email, setEmail] = React.useState('');
+
+  const handleSchedule = () => {
+    const url = `https://calendly.com/jashambaliya1/30min${email ? `?email=${encodeURIComponent(email)}` : ''}`;
+    window.open(url, '_blank');
+  };
+
   return (
     <section className="cta section-padding" id="contact">
       <div className="container">
@@ -24,11 +31,17 @@ const CTA = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.5 }}
           >
-            <input type="email" placeholder="Enter your email" />
+            <input
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
             <motion.button
               className="btn btn-primary"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={handleSchedule}
             >
               Schedule Meeting
             </motion.button>
