@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ValueProp from './components/ValueProp';
-import Features from './components/Features';
+// import Features from './components/Features';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
 
@@ -11,18 +11,25 @@ import FAQ from './components/FAQ';
 import Comparison from './components/Comparison';
 import Process from './components/Process';
 import ServicesList from './components/ServicesList';
-import ThreeBackground from './components/ThreeBackground';
+// import ThreeBackground from './components/ThreeBackground';
+
+const Features = lazy(() => import('./components/Features'));
+const ThreeBackground = lazy(() => import('./components/ThreeBackground'));
 
 function App() {
   return (
     <div className="App">
-      <ThreeBackground />
+      <Suspense fallback={null}>
+        <ThreeBackground />
+      </Suspense>
       <Navbar />
       <Hero />
       <ServicesList />
       <ValueProp />
       <Process />
-      <Features />
+      <Suspense fallback={<div style={{ height: '600px' }} />}>
+        <Features />
+      </Suspense>
       <Comparison />
       <Reviews />
       <FAQ />

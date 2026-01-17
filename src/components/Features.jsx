@@ -45,7 +45,7 @@ const Geometries = ({ type, color }) => {
 const FeatureIcon = ({ type }) => {
   return (
     <div className="icon-canvas-container">
-      <Canvas dpr={[1, 1.5]} gl={{ antialias: true }}>
+      <Canvas dpr={[1, 1.5]} gl={{ antialias: false }}>
         <PerspectiveCamera makeDefault position={[0, 0, 5]} />
         <ambientLight intensity={0.5} />
         <pointLight position={[10, 10, 10]} intensity={1} color="#CBF382" />
