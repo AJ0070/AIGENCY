@@ -13,7 +13,7 @@ const ValueProp = () => {
           transition={{ duration: 0.8 }}
         >
           <h2 className="title-large">
-            Senior Talent. <br />
+            Expert Talent. <br />
             <span className="text-gradient">Startup Rates.</span>
           </h2>
           <p className="subtitle">
