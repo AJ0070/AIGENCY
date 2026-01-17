@@ -1,12 +1,12 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 
 const Hero = () => {
   return (
     <section className="hero">
       <div className="container hero-container">
         <div className="hero-content">
-          <motion.h1
+          <m.h1
             className="hero-title"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -14,24 +14,24 @@ const Hero = () => {
           >
             Launch <br />
             Your Site. <br />
-            <motion.span
+            <m.span
               className="highlight"
               initial={{ opacity: 0, scaleX: 0 }}
               animate={{ opacity: 1, scaleX: 1 }}
               transition={{ duration: 0.8, delay: 1 }}
             >
               Now.
-            </motion.span>
-          </motion.h1>
-          <motion.p
+            </m.span>
+          </m.h1>
+          <m.p
             className="hero-subtitle"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             Stop waiting for slow agencies. Get your high-converting website delivered fast.
-          </motion.p>
-          <motion.div
+          </m.p>
+          <m.div
             className="hero-actions"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -39,7 +39,7 @@ const Hero = () => {
           >
             <a href="#contact" className="btn btn-primary">Start Your Project</a>
             <a href="#work" className="btn btn-outline">View Portfolio</a>
-          </motion.div>
+          </m.div>
         </div>
       </div>
 

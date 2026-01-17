@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 
 const Footer = () => {
   const container = {
@@ -19,38 +19,38 @@ const Footer = () => {
 
   return (
     <footer className="footer">
-      <motion.div
+      <m.div
         className="container footer-container"
         variants={container}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
       >
-        <motion.div className="footer-left" variants={item}>
+        <m.div className="footer-left" variants={item}>
           <h3 className="logo">AIGENCY</h3>
           <p>© 2026 AIGENCY. All rights reserved.</p>
-        </motion.div>
+        </m.div>
         <div className="footer-links">
-          <motion.div className="link-col" variants={item}>
+          <m.div className="link-col" variants={item}>
             <h4>Services</h4>
             <a href="#">Web Design</a>
             <a href="#">Development</a>
             <a href="#">SEO</a>
-          </motion.div>
-          <motion.div className="link-col" variants={item}>
+          </m.div>
+          <m.div className="link-col" variants={item}>
             <h4>Company</h4>
             <a href="#">About</a>
             <a href="#">Career</a>
             <a href="#">Contact</a>
-          </motion.div>
-          <motion.div className="link-col" variants={item}>
+          </m.div>
+          <m.div className="link-col" variants={item}>
             <h4>Social</h4>
             <a href="#">Twitter</a>
             <a href="#">LinkedIn</a>
             <a href="#">Instagram</a>
-          </motion.div>
+          </m.div>
         </div>
-      </motion.div>
+      </m.div>
 
       <style>{`
         .footer {

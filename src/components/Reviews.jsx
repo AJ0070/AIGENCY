@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 
 const Reviews = () => {
   const reviews = [
@@ -39,7 +39,7 @@ const Reviews = () => {
   return (
     <section className="reviews section-padding" id="reviews">
       <div className="container">
-        <motion.h2
+        <m.h2
           className="section-title text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -47,8 +47,8 @@ const Reviews = () => {
           transition={{ duration: 0.6 }}
         >
           Trusted by Founders.
-        </motion.h2>
-        <motion.div
+        </m.h2>
+        <m.div
           className="reviews-grid"
           variants={container}
           initial="hidden"
@@ -56,7 +56,7 @@ const Reviews = () => {
           viewport={{ once: true, margin: "-50px" }}
         >
           {reviews.map((review, index) => (
-            <motion.div className="review-card" key={index} variants={item}>
+            <m.div className="review-card" key={index} variants={item}>
               <div className="stars">★★★★★</div>
               <p className="review-text">"{review.text}"</p>
               <div className="review-author">
@@ -66,9 +66,9 @@ const Reviews = () => {
                   <span>{review.role}</span>
                 </div>
               </div>
-            </motion.div>
+            </m.div>
           ))}
-        </motion.div>
+        </m.div>
       </div>
 
       <style>{`

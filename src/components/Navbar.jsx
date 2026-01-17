@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -13,7 +13,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <motion.nav
+    <m.nav
       className="toolbar-wrapper"
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
@@ -33,7 +33,7 @@ const Navbar = () => {
           <a href="#">Careers</a>
         </div>
 
-        <motion.a
+        <m.a
           href="https://calendly.com/jashambaliya1/30min"
           target="_blank"
           rel="noopener noreferrer"
@@ -42,7 +42,7 @@ const Navbar = () => {
           whileTap={{ scale: 0.95 }}
         >
           Book a Call
-        </motion.a>
+        </m.a>
       </div>
 
       <style>{`
@@ -127,7 +127,7 @@ const Navbar = () => {
           }
         }
       `}</style>
-    </motion.nav>
+    </m.nav>
   );
 };
 

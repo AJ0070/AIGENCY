@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 
 const CTA = () => {
   const [email, setEmail] = React.useState('');
@@ -12,7 +12,7 @@ const CTA = () => {
   return (
     <section className="cta section-padding" id="contact">
       <div className="container">
-        <motion.div
+        <m.div
           className="cta-box"
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -25,7 +25,7 @@ const CTA = () => {
           <p>
             Don't just settle for an ordinary one. Go beyond with AIGENCY.
           </p>
-          <motion.div
+          <m.div
             className="input-group"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -37,16 +37,16 @@ const CTA = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <motion.button
+            <m.button
               className="btn btn-primary"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={handleSchedule}
             >
               Schedule Meeting
-            </motion.button>
-          </motion.div>
-        </motion.div>
+            </m.button>
+          </m.div>
+        </m.div>
       </div>
 
       <style>{`

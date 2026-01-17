@@ -1,11 +1,11 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 
 const ValueProp = () => {
   return (
     <section className="value-prop section-padding">
       <div className="container">
-        <motion.div
+        <m.div
           className="value-content"
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -19,7 +19,7 @@ const ValueProp = () => {
           <p className="subtitle">
             High-quality website builds by experienced developers. Maximize conversions without overspending.
           </p>
-        </motion.div>
+        </m.div>
       </div>
 
       <style>{`

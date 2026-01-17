@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 
 const Comparison = () => {
   const data = [
@@ -15,7 +15,7 @@ const Comparison = () => {
   return (
     <section className="comparison section-padding" id="comparison">
       <div className="container">
-        <motion.div
+        <m.div
           className="text-center mb-5"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -24,9 +24,9 @@ const Comparison = () => {
         >
           <h2 className="section-title">What makes us different?</h2>
           <p className="section-subtitle">See how we stack up against the competition</p>
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           className="table-container"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -56,7 +56,7 @@ const Comparison = () => {
               ))}
             </tbody>
           </table>
-        </motion.div>
+        </m.div>
       </div>
 
       <style>{`

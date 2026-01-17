@@ -1,4 +1,5 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, useState, useEffect } from 'react';
+import { LazyMotion, domAnimation, m } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ValueProp from './components/ValueProp';
@@ -16,26 +17,44 @@ import ServicesList from './components/ServicesList';
 const Features = lazy(() => import('./components/Features'));
 const ThreeBackground = lazy(() => import('./components/ThreeBackground'));
 
+const DelayedBackground = () => {
+  const [shouldLoad, setShouldLoad] = useState(false);
+
+  useEffect(() => {
+    // Defer loading of heavy 3D background until after LCP
+    const timer = setTimeout(() => setShouldLoad(true), 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (!shouldLoad) return <div className="three-bg-placeholder" />;
+
+  return (
+    <Suspense fallback={null}>
+      <ThreeBackground />
+    </Suspense>
+  );
+};
+
 function App() {
   return (
-    <div className="App">
-      <Suspense fallback={null}>
-        <ThreeBackground />
-      </Suspense>
-      <Navbar />
-      <Hero />
-      <ServicesList />
-      <ValueProp />
-      <Process />
-      <Suspense fallback={<div style={{ height: '600px' }} />}>
-        <Features />
-      </Suspense>
-      <Comparison />
-      <Reviews />
-      <FAQ />
-      <CTA />
-      <Footer />
-    </div>
+    <LazyMotion features={domAnimation}>
+      <div className="App">
+        <DelayedBackground />
+        <Navbar />
+        <Hero />
+        <ServicesList />
+        <ValueProp />
+        <Process />
+        <Suspense fallback={<div style={{ height: '600px' }} />}>
+          <Features />
+        </Suspense>
+        <Comparison />
+        <Reviews />
+        <FAQ />
+        <CTA />
+        <Footer />
+      </div>
+    </LazyMotion>
   );
 }
 

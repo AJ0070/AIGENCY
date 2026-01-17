@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Float, PerspectiveCamera, Environment } from '@react-three/drei';
+import { Float, PerspectiveCamera } from '@react-three/drei';
 
 const Geometries = ({ type, color }) => {
   const meshRef = useRef();
@@ -52,7 +52,7 @@ const FeatureIcon = ({ type }) => {
         <Float speed={2} rotationIntensity={1} floatIntensity={1}>
           <Geometries type={type} color="#CBF382" />
         </Float>
-        <Environment preset="city" />
+
       </Canvas>
     </div>
   );
@@ -110,7 +110,7 @@ const Features = () => {
   return (
     <section className="features section-padding" id="benefits">
       <div className="container">
-        <motion.div
+        <m.div
           className="section-header"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -119,9 +119,9 @@ const Features = () => {
         >
           <h2 className="section-title">Why AIGENCY?</h2>
           <p className="section-subtitle">The competitive advantage your startup needs.</p>
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           className="features-grid"
           variants={container}
           initial="hidden"
@@ -129,15 +129,15 @@ const Features = () => {
           viewport={{ once: true, margin: "-50px" }}
         >
           {features.map((feature, index) => (
-            <motion.div className="feature-card" key={index} variants={item}>
+            <m.div className="feature-card" key={index} variants={item}>
               <FeatureIcon type={feature.shape} />
               <div className="feature-content">
                 <h3>{feature.title}</h3>
                 <p>{feature.desc}</p>
               </div>
-            </motion.div>
+            </m.div>
           ))}
-        </motion.div>
+        </m.div>
       </div>
 
       <style>{`

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 
 const FAQItem = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <motion.div
+    <m.div
       className={`faq-item ${isOpen ? 'open' : ''}`}
       onClick={() => setIsOpen(!isOpen)}
       initial={{ opacity: 0, y: 10 }}
@@ -18,7 +18,7 @@ const FAQItem = ({ question, answer }) => {
       </div>
       <AnimatePresence>
         {isOpen && (
-          <motion.div
+          <m.div
             className="faq-answer"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
@@ -26,10 +26,10 @@ const FAQItem = ({ question, answer }) => {
             transition={{ duration: 0.3 }}
           >
             <p>{answer}</p>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
-    </motion.div>
+    </m.div>
   );
 };
 
@@ -60,7 +60,7 @@ const FAQ = () => {
     <section className="faq section-padding" id="faq">
       <div className="container">
         <div className="faq-container">
-          <motion.h2
+          <m.h2
             className="section-title text-center"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -68,7 +68,7 @@ const FAQ = () => {
             transition={{ duration: 0.6 }}
           >
             Frequently Asked Questions
-          </motion.h2>
+          </m.h2>
           <div className="faq-list">
             {faqs.map((faq, index) => (
               <FAQItem key={index} {...faq} />

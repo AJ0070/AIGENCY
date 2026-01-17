@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 
 const Process = () => {
   const steps = [
@@ -44,7 +44,7 @@ const Process = () => {
     <section className="process section-padding" id="process">
       <div className="container">
         <div className="process-header">
-          <motion.div
+          <m.div
             className="header-content"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -56,10 +56,10 @@ const Process = () => {
             <p className="section-desc">
               We make it easy to get you a stunning, high-performing website. Fast, clear, and built to win customers.
             </p>
-          </motion.div>
+          </m.div>
         </div>
 
-        <motion.div
+        <m.div
           className="process-steps"
           variants={container}
           initial="hidden"
@@ -67,15 +67,15 @@ const Process = () => {
           viewport={{ once: true, margin: "-50px" }}
         >
           {steps.map((step, index) => (
-            <motion.div className="step-card" key={index} variants={item}>
+            <m.div className="step-card" key={index} variants={item}>
               <div className="step-number">{step.number}</div>
               <div className="step-content">
                 <h3>{step.title}</h3>
                 <p>{step.desc}</p>
               </div>
-            </motion.div>
+            </m.div>
           ))}
-        </motion.div>
+        </m.div>
       </div>
 
       <style>{`

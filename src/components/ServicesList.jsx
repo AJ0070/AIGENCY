@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 
 const ServicesList = () => {
   const services = [
@@ -36,7 +36,7 @@ const ServicesList = () => {
   return (
     <section className="services-list section-padding">
       <div className="container services-container">
-        <motion.div
+        <m.div
           className="services-header"
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -48,9 +48,9 @@ const ServicesList = () => {
             In record <br />
             <span className="text-white">time.</span>
           </h2>
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           className="services-grid"
           variants={container}
           initial="hidden"
@@ -58,19 +58,19 @@ const ServicesList = () => {
           viewport={{ once: true, margin: "-50px" }}
         >
           {services.map((service, index) => (
-            <motion.div className="service-item" key={index} variants={item}>
+            <m.div className="service-item" key={index} variants={item}>
               <span className="service-name">{service}</span>
-              <motion.div
+              <m.div
                 className="icon-box"
                 whileHover={{ scale: 1.2, rotate: 10 }}
               >
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#000" stroke="#000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-              </motion.div>
-            </motion.div>
+              </m.div>
+            </m.div>
           ))}
-        </motion.div>
+        </m.div>
       </div>
 
       <style>{`

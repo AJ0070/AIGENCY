@@ -1,7 +1,7 @@
 import React, { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Points, PointMaterial } from '@react-three/drei';
-import * as random from 'three/examples/jsm/utils/BufferGeometryUtils';
+// Removed unused BufferGeometryUtils import
 // Note: BufferGeometryUtils isn't right for simple random positions helper in r3f ecosystem usually
 // We'll use a custom function for random positions to avoid complexity with imports if standard math fails
 import * as THREE from 'three';
