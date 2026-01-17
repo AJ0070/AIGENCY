@@ -2,10 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import featureSpeed from '../assets/feature-speed.png';
 import featureConversion from '../assets/feature-conversion.png';
-import featureStrategy from '../assets/feature-strategy.png';
-import featurePricing from '../assets/feature-pricing.png';
-import featureSupport from '../assets/feature-support.png';
-import featureTeam from '../assets/feature-team.png';
+import featureStrategy from '../assets/feature-strategy-v2.png';
+import featurePricing from '../assets/feature-pricing-v2.png';
+import featureSupport from '../assets/feature-support-v2.png';
+import featureTeam from '../assets/feature-team-v2.png';
 
 const Features = () => {
   const features = [
