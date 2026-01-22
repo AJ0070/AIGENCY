@@ -32,22 +32,21 @@ const Footer = () => {
         </m.div>
         <div className="footer-links">
           <m.div className="link-col" variants={item}>
-            <h4>Services</h4>
-            <a href="#">Web Design</a>
-            <a href="#">Development</a>
-            <a href="#">SEO</a>
+            <h4>Explore</h4>
+            <a href="#services">Services</a>
+            <a href="#benefits">Benefits</a>
+            <a href="#process">Process</a>
           </m.div>
           <m.div className="link-col" variants={item}>
-            <h4>Company</h4>
-            <a href="#">About</a>
-            <a href="#">Career</a>
-            <a href="#">Contact</a>
+            <h4>Proof</h4>
+            <a href="#comparison">Comparison</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#faq">FAQs</a>
           </m.div>
           <m.div className="link-col" variants={item}>
-            <h4>Social</h4>
-            <a href="#">Twitter</a>
-            <a href="#">LinkedIn</a>
-            <a href="#">Instagram</a>
+            <h4>Get Started</h4>
+            <a href="#contact">Contact</a>
+            <a href="https://calendly.com/jashambaliya1/30min" target="_blank" rel="noreferrer noopener">Book a Call</a>
           </m.div>
         </div>
       </m.div>

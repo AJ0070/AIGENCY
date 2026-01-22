@@ -21,16 +21,29 @@ const Navbar = () => {
     >
       <div className="toolbar">
         <div className="logo-container">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2L2 22H22L12 2Z" fill="#fff" />
+          <svg className="logo-mark" width="32" height="32" viewBox="0 0 64 64" aria-hidden="true">
+            <defs>
+              <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#CBF382" />
+                <stop offset="100%" stopColor="#7FE19E" />
+              </linearGradient>
+            </defs>
+            <rect x="6" y="6" width="52" height="52" rx="14" fill="url(#logoGradient)" />
+            <path
+              d="M20 46L32 18L44 46H36.8L32 34.5L27.2 46H20Z"
+              fill="#050505"
+            />
+            <path d="M22 44H42" stroke="#050505" strokeWidth="3" strokeLinecap="round" />
           </svg>
+          <span className="logo-wordmark">AIGENCY</span>
         </div>
 
         <div className="nav-links">
-          <a href="#work">Our Work</a>
-          <a href="#comparison">Comparison</a>
+          <a href="#services">Services</a>
+          <a href="#benefits">Benefits</a>
+          <a href="#process">Process</a>
+          <a href="#reviews">Reviews</a>
           <a href="#faq">FAQs</a>
-          <a href="#">Careers</a>
         </div>
 
         <m.a
@@ -58,38 +71,53 @@ const Navbar = () => {
         }
 
         .toolbar {
-          background: rgba(5, 5, 5, 0.6);
+          background: rgba(5, 5, 5, 0.65);
           backdrop-filter: blur(16px);
           border: 1px solid rgba(255, 255, 255, 0.1);
           border-radius: 9999px;
-          padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+          padding: 0.65rem 1rem;
           display: flex;
           align-items: center;
-          gap: 2rem;
-          max-width: 600px;
+          gap: 1.5rem;
+          max-width: 960px;
           width: 100%;
           justify-content: space-between;
           box-shadow: 0 10px 40px rgba(0,0,0,0.5);
         }
 
-        .logo-container svg {
-          display: block;
+        .logo-container {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.6rem;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+        }
+
+        .logo-mark {
+          border: 1px solid rgba(255, 255, 255, 0.12);
+          border-radius: 12px;
+          background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0));
+        }
+
+        .logo-wordmark {
+          font-size: 0.95rem;
         }
 
         .nav-links {
           display: flex;
-          gap: 1.5rem;
+          gap: 1.25rem;
         }
 
         .nav-links a {
           color: var(--text-secondary);
           font-size: 0.9rem;
-          font-weight: 500;
-          transition: color 0.3s;
+          font-weight: 600;
+          transition: color 0.3s, opacity 0.3s;
         }
 
         .nav-links a:hover {
           color: #fff;
+          opacity: 1;
         }
 
         .btn-white {
@@ -111,7 +139,7 @@ const Navbar = () => {
         @media (max-width: 768px) {
           .toolbar {
             gap: 1rem;
-            padding: 0.5rem 0.5rem 0.5rem 1rem;
+            padding: 0.6rem 0.75rem;
           }
           
           .nav-links {
@@ -124,7 +152,12 @@ const Navbar = () => {
           
           .logo-container {
              margin-right: auto;
+             gap: 0.4rem;
           }
+
+           .logo-wordmark {
+             display: none;
+           }
         }
       `}</style>
     </m.nav>

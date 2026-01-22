@@ -34,7 +34,7 @@ const ServicesList = () => {
   };
 
   return (
-    <section className="services-list section-padding">
+    <section className="services-list section-padding" id="services">
       <div className="container services-container">
         <m.div
           className="services-header"

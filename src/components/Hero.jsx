@@ -38,7 +38,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <a href="#contact" className="btn btn-primary">Start Your Project</a>
-            <a href="#work" className="btn btn-outline">View Portfolio</a>
+            <a href="#process" className="btn btn-outline">See How We Work</a>
           </m.div>
         </div>
       </div>
