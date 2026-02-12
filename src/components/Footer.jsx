@@ -46,6 +46,7 @@ const Footer = () => {
           <m.div className="link-col" variants={item}>
             <h4>Get Started</h4>
             <a href="#contact">Contact</a>
+            <a href="https://calendly.com/jashambaliya1/30min" target="_blank" rel="noreferrer noopener">Book a Call</a>
           </m.div>
         </div>
       </m.div>

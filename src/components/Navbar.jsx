@@ -46,7 +46,16 @@ const Navbar = () => {
           <a href="#faq">FAQs</a>
         </div>
 
-
+        <m.a
+          href="https://calendly.com/jashambaliya1/30min"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn btn-white"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          Book a Call
+        </m.a>
       </div>
 
       <style>{`
